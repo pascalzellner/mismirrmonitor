@@ -1,0 +1,7 @@
+enum Position{
+  SUPIN,
+  STANDUP,
+  SEATED,
+  TRANSITION,
+  UNKNOW
+}
