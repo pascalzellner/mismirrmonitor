@@ -1,10 +1,12 @@
 # mismirrmonitor
 
-A new Flutter project.
+A flutter project to design a RR monitor and collector for MisMi HRV european Alcotra Project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is based on flutter, flutter blue librairy. For all dpendencies see pubspec.yaml file
+
+more info on MisMi program https://www.interreg-alcotra.eu/fr/decouvrir-alcotra/les-projets-finances/mismi-modele-integre-de-sante-pour-une-montagne-inclusive
 
 A few resources to get you started if this is your first Flutter project:
 
@@ -14,3 +16,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+You can fork this code under MIT licence
