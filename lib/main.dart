@@ -8,6 +8,7 @@ import 'package:mismirrmonitor/screen/no_bluetooth.dart';
 import 'models/sensor.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
+
 void main() async {
 
   await Hive.initFlutter();

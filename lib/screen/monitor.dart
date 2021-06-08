@@ -31,7 +31,6 @@ class _MonitorScreenState extends State<MonitorScreen> {
     Box<RRPoint> rrpoints = Hive.box<RRPoint>('RRPoints');
     Box<RRSerie> record = Hive.box<RRSerie>('RRSeries');
 
-    List<String> _positions=['COUCHE','DEBOUT','COUCHE>DEBOUT','ASSIS','NP'];
     
     //affichage de la confirmation d'enregistrement si ANNULER on clear la timeseries, si enregistrer on exporte ds hive puis on clear
     Future <void> _showRecordDialog() async {
@@ -56,19 +55,6 @@ class _MonitorScreenState extends State<MonitorScreen> {
                 },
               ),
               SizedBox(height:10.0),
-              DropdownButtonFormField(
-                items: _positions.map((e){
-                  return DropdownMenuItem(
-                    value:e,
-                    child: Text(e),
-                  );
-                }).toList(),
-                onChanged: (val){
-                  setState(() {
-                    _position=val;
-                  });
-                },
-              ),
               ]),
             ),
             actions: [
@@ -89,9 +75,9 @@ class _MonitorScreenState extends State<MonitorScreen> {
               ),
               TextButton(
                 onPressed: () async {
-
+                  
                   //si ok pour enregistrer on va enregister dans Hive
-                  RRSerie exam = RRSerie(name: _anonymat, dateTime: DateTime.now(), position: _position);
+                  RRSerie exam = RRSerie(name: _anonymat, dateTime: DateTime.now(), position: 'MISMIPROT');
                   List<RRPoint> actualRR = [];
                   for(var rr in rrpoints.values){
                     RRPoint newrr = RRPoint(rrvalue:rr.rrvalue);
