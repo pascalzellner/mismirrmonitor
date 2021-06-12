@@ -26,7 +26,6 @@ class _MonitorScreenState extends State<MonitorScreen> {
     bool _isRecording = false;
     bool _isPause = false;
     String _anonymat;
-    String _position;
 
     Box<RRPoint> rrpoints = Hive.box<RRPoint>('RRPoints');
     Box<RRSerie> record = Hive.box<RRSerie>('RRSeries');
@@ -260,6 +259,7 @@ class _MonitorScreenState extends State<MonitorScreen> {
               StreamBuilder<List<BluetoothService>>(
                 stream: widget.device.services,
                 initialData: [],
+                // ignore: missing_return
                 builder:(c,snapshot){
                   for(var s in snapshot.data){
                     bool flagS = s.uuid.toString().startsWith('0000180d');
@@ -290,7 +290,7 @@ class _MonitorScreenState extends State<MonitorScreen> {
                           return ListTile(
                             leading: Icon(Icons.favorite),
                             title:Text('HR',style: TextStyle(fontSize: 12.0,color: Colors.pink),),
-                            subtitle: Text('non connecté',style: TextStyle(fontSize:30.0,color:Colors.pink[500]),),
+                            subtitle: Text('--',style: TextStyle(fontSize:30.0,color:Colors.pink[500]),),
                           );
                         }
                       }
@@ -303,6 +303,7 @@ class _MonitorScreenState extends State<MonitorScreen> {
               StreamBuilder<List<BluetoothService>>(
                 stream: widget.device.services,
                 initialData: [],
+                // ignore: missing_return
                 builder:(c,snapshot){
                   for(var s in snapshot.data){
                     bool flagS = s.uuid.toString().startsWith('0000180d');
@@ -347,7 +348,7 @@ class _MonitorScreenState extends State<MonitorScreen> {
                           return ListTile(
                             leading: Icon(Icons.favorite),
                             title:Text('RR',style: TextStyle(fontSize: 12.0,color: Colors.pink),),
-                            subtitle: Text('non connecté',style: TextStyle(fontSize:30.0,color:Colors.pink[500]),),
+                            subtitle: Text('---',style: TextStyle(fontSize:30.0,color:Colors.pink[500]),),
                           );
                         }
                       }

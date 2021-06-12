@@ -25,7 +25,8 @@ class BtleOffScreen extends StatelessWidget {
           ),
           SizedBox(height:10.0),
           Text('Vérifier et/ou Allumer le bluetooth',style: TextStyle(fontSize: 12.0,color: Colors.pink[900]),),
-          Text('Pour Android vérifier et/ou allumer le GPS',style: TextStyle(fontSize: 12.0,color: Colors.pink[800]),)
+          Text('Pour Android vérifier et/ou allumer le GPS',style: TextStyle(fontSize: 12.0,color: Colors.pink[800]),),
+          Text('v0.0.5.2',style: TextStyle(fontSize: 12.0,color: Colors.grey),)
         ],),),
       ),
     );

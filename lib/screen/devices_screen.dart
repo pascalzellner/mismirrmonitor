@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 class DevicesScreen extends StatefulWidget {
+
+  final FlutterBlue flutterBlue;
+  DevicesScreen({this.flutterBlue});
+
   @override
   _DevicesScreenState createState() => _DevicesScreenState();
 }
@@ -24,19 +28,19 @@ class _DevicesScreenState extends State<DevicesScreen> {
         ],
       ),
       floatingActionButton: StreamBuilder<bool>(
-        stream : FlutterBlue.instance.isScanning,
+        stream : widget.flutterBlue.isScanning,
         initialData: false,
         builder: (c,snapshot){
           if(snapshot.data){
             return FloatingActionButton(
-              onPressed: ()=>FlutterBlue.instance.stopScan(),
+              onPressed: ()=>widget.flutterBlue.stopScan(),
               tooltip: 'Stop Scanning',
               child: Icon(Icons.stop),
               backgroundColor: Colors.pink[700],
             );
           }else{
             return FloatingActionButton(
-              onPressed: ()=>FlutterBlue.instance.startScan(timeout:Duration(seconds: 4)),
+              onPressed: ()=>widget.flutterBlue.startScan(timeout:Duration(seconds: 4)),
               tooltip: 'Start Scanning',
               child: Icon(Icons.bluetooth),
               backgroundColor: Colors.yellow[700],
@@ -45,13 +49,13 @@ class _DevicesScreenState extends State<DevicesScreen> {
         },
       ),
       body: RefreshIndicator(
-        onRefresh: ()=>FlutterBlue.instance.startScan(timeout:Duration(seconds: 4)),
+        onRefresh: ()=>widget.flutterBlue.startScan(timeout:Duration(seconds: 4)),
         child: SingleChildScrollView(
           child: Column(children: [
             //affiche les devices cardio déjà listé
             //affiche les devices non connectés
             StreamBuilder<List<ScanResult>>(
-              stream:FlutterBlue.instance.scanResults,
+              stream:widget.flutterBlue.scanResults,
               initialData: [],
               builder: (c,snapshot)=>Column(
                 children:snapshot.data.map((r) => ScanDeviceTile(device:r.device)).toList(),

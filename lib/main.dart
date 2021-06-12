@@ -9,6 +9,7 @@ import 'models/sensor.dart';
 import 'package:flutter_blue/flutter_blue.dart';
 
 
+
 void main() async {
 
   await Hive.initFlutter();
@@ -44,15 +45,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  final FlutterBlue flutterBlue = FlutterBlue.instance;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<BluetoothState>(
-      stream: FlutterBlue.instance.state,
+      stream: flutterBlue.state,
       initialData: BluetoothState.off,
       builder: (c,snapshot){
         final state = snapshot.data;
         if(state==BluetoothState.on){
-          return DevicesScreen();
+          //on injecte l'instance singleton
+          return DevicesScreen(flutterBlue: flutterBlue,);
         }else{
           return BtleOffScreen();
         }
